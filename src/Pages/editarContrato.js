@@ -30,7 +30,7 @@ const App = () => {
 
   const handleSubmit = () => {
     console.log('Nome:', name);
-    console.log('Número do Contrato:', contractNumber);
+    console.log('Nº do Contrato:', contractNumber);
     console.log('Tipo de Serviço:', serviceType);
     console.log('Gestor:', manager);
     console.log('Observações:', observations);
