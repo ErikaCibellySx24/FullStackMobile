@@ -4,35 +4,35 @@ import {
   Text, 
   TouchableHighlight, 
   TouchableOpacity, 
+  Linking, 
   StyleSheet, 
-  Image
-}
+  Image,
+  ImageBackground,
+  handleButtonPress
+
+} 
 from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
 
 const App = () => {
-  const navigation = useNavigation();
-
-  const handleNavigateToContracts = () => {
-    navigation.navigate('Contratos');
+  const handleButtonPressContratos = () => {
+    Linking.openURL('./src/Pages/contratos.js');
   };
-
-
-  const handleNavigateToEditContracts = () => {
-    navigation.navigate('EditarContrato');
-  };
-
-  const handleNavigateToNotasFiscais = () => {
-    navigation.navigate('NotasFiscais');
+  const handleButtonPressEditarContrato = () => {
+    Linking.openURL('./src/Pages/editarContrato.js');
   };
 
   return (
+   
     <View style={styles.container}>
+     
+     
+
       <Text style={styles.title}>Bem-vindo(a)!</Text>
       <Image source={require("./assets/logo-rm.png")} style={styles.image} />
 
-      <TouchableHighlight
-        onPress={handleNavigateToContracts}
+      <TouchableHighlight 
+        onPress={handleButtonPressContratos}
         style={styles.button}
         underlayColor="#467857"
         >
@@ -40,21 +40,23 @@ const App = () => {
       </TouchableHighlight>
 
       <TouchableOpacity 
-        onPress={handleNavigateToEditContracts}
+        onPress={handleButtonPressEditarContrato}
         style={styles.button}
         underlayColor="#467857"
         >
-        <Text>EDITAR CONTRATOS</Text>
+        <Text>PLANILHAS DE NF</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
-        onPress={handleNavigateToNotasFiscais}
-        style={styles.button}
-        underlayColor="#467857"
-        >
-        <Text>NOTAS FISCAIS</Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+          onPress={handleButtonPress}
+          style={styles.button}
+         underlayColor="#467857"
+          >
+         <Text>NOTAS FISCAIS</Text>
+        </TouchableOpacity>
+        <ImageBackground source={require('./assets/Background_app.png')} style={styles.Imgbkg}></ImageBackground> 
     </View>
+    
   );
 };
 const styles = StyleSheet.create({
@@ -63,19 +65,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  Imgbkg: {
+    
+    resizeMode: 'cover', 
+    width: 600,
+    height: 704,
+    top: -100,
+    transform: [{rotate: '-10.35deg'}],
+    opacity: 100,
+    
+    
+  },
   title: {
     fontSize: 24,
     fontWeight: 400,
     lineHeight:  36.45,
     fontSize: 30,
     marginBottom: 10,
-    top: -100,
+    top: 280,
     color: '#062E13',
   },
   image: {
     width: 195,
     height: 94,
-    top: -70,
+    top: 300,
+    alignItems: 'center',
     marginBottom: 20,
   },
   button: {
@@ -83,6 +97,7 @@ const styles = StyleSheet.create({
     padding: 20,
     width: 324,
     height: 45,
+    top: 400,
     borderRadius: 16,
     marginVertical: 10,
   },
