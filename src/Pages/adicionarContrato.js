@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-const App = () => {
+const adicionarContrato = () => {
   const [name, setName] = useState('');
   const [contractNumber, setContractNumber] = useState('');
   const [serviceType, setServiceType] = useState('');
@@ -76,12 +76,12 @@ const App = () => {
         multiline={true}
       />
 
-      <Button
-        title="Enviar"
-        onPress={handleSubmit}
-      />
+      <View style={styles.buttonContainer}>
+        <Button title="OK" onPress={handleSubmit} color="#062E13" />
+        <Button title="Cancelar" onPress={handleCancel} color="#98A09B" />
+      </View>
     </View>
-  );
+);
 };
 
 const styles = StyleSheet.create({
@@ -106,6 +106,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
   },
+  buttonContainer: {
+    height: 46,
+    width: 109,
+    left: 72,
+    top: 651,
+    border: 0,
+
+  },
 });
 
-export default App;
+export default adicionarContrato;
